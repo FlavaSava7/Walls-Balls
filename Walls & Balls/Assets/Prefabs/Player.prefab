@@ -112,7 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4434931415352125638, guid: 3475694bb21a19a48a6a3ee3e29aadd9, type: 3}
   bulletPool: {fileID: 0}
-  hp: 100
+  hp: 50
+  maxHP: 50
 --- !u!1 &7660825450638223309
 GameObject:
   m_ObjectHideFlags: 0

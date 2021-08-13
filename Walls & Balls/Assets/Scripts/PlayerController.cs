@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,14 +9,20 @@ public class PlayerController : MonoBehaviour {
     public GameObject bullet;
     public GameObject bulletPool;
     public int hp;
+    public int maxHP;
 
     Vector3 mousePos;
-    public static PlayerController self;
 
-    void Start() {
+    public static PlayerController self;
+    public static event Action<int> eventPlayerHP;
+
+    void Awake() {
         self = this;
     }
 
+    void Start() {
+
+    }
 
     void Update() {
         rotate();
@@ -47,12 +54,17 @@ public class PlayerController : MonoBehaviour {
         hp -= amount;
         if (hp <= 0) {
             hp = 0;
-            Debug.Log("DEAD!");
         }
+        eventPlayerHP.Invoke(-amount);
     }
 
     public void addHp(int amount) {
         hp += amount;
+        if (hp > maxHP) {
+            amount = Mathf.Abs(hp - maxHP - amount);
+            hp = maxHP;
+        }
+        eventPlayerHP.Invoke(amount);
     }
 
 

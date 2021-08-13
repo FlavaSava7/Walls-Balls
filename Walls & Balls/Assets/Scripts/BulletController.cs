@@ -23,9 +23,7 @@ public class BulletController : MonoBehaviour {
         GameObject.Destroy(gameObject, 5f);
     }
 
-
     void OnTriggerEnter(Collider other) {
-
         if (other.gameObject.tag == Tags.BALL) {
             BallController ballController = other.gameObject.GetComponent<BallController>();
             ballController.getHit(damage);

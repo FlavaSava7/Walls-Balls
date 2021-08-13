@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SearchService;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour {
 
@@ -20,6 +22,14 @@ public class GameController : MonoBehaviour {
     public int itemsMaxAmount;
     public float itemsSpawningTime;
     GameObject[] itemsSpawnPlaces;
+
+    public static event Action<int> eventBallSpawn;
+
+    public static GameController self;
+
+    void Awake() {
+        self = this;
+    }
 
     void Start() {
         setSpawnPlaces(ballsSpawnPlacesParent, ref ballsSpawnPlaces);
@@ -51,6 +61,10 @@ public class GameController : MonoBehaviour {
             int spawnIdx = Random.Range(0, spawnPlaces.Length);
             int pfIdx = Random.Range(0, prefabs.Length);
             GameObject go = Instantiate(prefabs[pfIdx], spawnPlaces[spawnIdx].transform.position, getSpawnerRotation(tag), pool.transform);
+            if (tag == Tags.BALL) {
+                eventBallSpawn.Invoke(1);
+            }
+
             yield return new WaitForSeconds(time);
         }
     }
@@ -64,6 +78,9 @@ public class GameController : MonoBehaviour {
             default:
                 return Quaternion.identity;
         }
+    }
 
+    public void ballDestroyed(GameObject ball) {
+        eventBallSpawn.Invoke(-1);
     }
 }

@@ -37,6 +37,7 @@ public class BallController : MonoBehaviour {
         hp -= amount;
         if (hp <= 0) {
             GameObject.Destroy(gameObject);
+            GameController.self.ballDestroyed(gameObject);
         }
     }
 
@@ -45,7 +46,5 @@ public class BallController : MonoBehaviour {
             PlayerController.self.getHit(damage);
         }
     }
-
-
 
 }
