@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour {
     int hp;
     int speed;
     int damage;
+    int points;
     void Start() {
         rb = GetComponent<Rigidbody>();
 
@@ -17,6 +18,7 @@ public class BallController : MonoBehaviour {
         hp = ball.hp;
         speed = ball.speed;
         damage = ball.damage;
+        points = ball.points;
 
         move(transform.forward);
     }
@@ -36,14 +38,17 @@ public class BallController : MonoBehaviour {
     public void getHit(int amount) {
         hp -= amount;
         if (hp <= 0) {
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
             GameController.self.ballDestroyed(gameObject);
         }
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == Tags.PLAYER) {
+        if (collision.gameObject.CompareTag(Tags.PLAYER)) {
             PlayerController.self.getHit(damage);
+        } else if (collision.gameObject.CompareTag(Tags.MAP) && rb.constraints.Equals(RigidbodyConstraints.None)) {
+            //prevent balls from flying around when hitting each other
+            rb.constraints = RigidbodyConstraints.FreezePositionY;
         }
     }
 

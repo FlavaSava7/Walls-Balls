@@ -15,7 +15,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!135 &485313566850563206
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -161,6 +161,10 @@ PrefabInstance:
     - target: {fileID: 8828204092815973163, guid: 9f8b265cb9ed1b34eb5904344e3c4c6b, type: 3}
       propertyPath: m_Name
       value: BallDef
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828204092815973163, guid: 9f8b265cb9ed1b34eb5904344e3c4c6b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f8b265cb9ed1b34eb5904344e3c4c6b, type: 3}

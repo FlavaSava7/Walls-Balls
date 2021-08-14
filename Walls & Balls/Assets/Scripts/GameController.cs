@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
     GameObject[] itemsSpawnPlaces;
 
     public static event Action<int> eventBallSpawn;
+    public static event Action<Ball> eventBallDestroyed;
 
     public static GameController self;
 
@@ -80,7 +81,9 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void ballDestroyed(GameObject ball) {
+    public void ballDestroyed(GameObject go) {
         eventBallSpawn.Invoke(-1);
+        Ball ball = go.GetComponent<BallController>().ball;
+        eventBallDestroyed(ball);
     }
 }

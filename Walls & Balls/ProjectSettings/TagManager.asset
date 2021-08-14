@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Bullet
   - Heart
+  - Map
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Player
   - Bullet
   - Ball
-  - 
-  - 
+  - Item
+  - Map
   - 
   - 
   - 

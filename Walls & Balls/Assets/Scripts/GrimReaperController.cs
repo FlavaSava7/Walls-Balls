@@ -5,7 +5,10 @@ using UnityEngine;
 public class GrimReaperController : MonoBehaviour {
 
     void OnTriggerExit(Collider other) {
-        GameObject.Destroy(other.gameObject);
+        if (other.CompareTag(Tags.BALL)) {
+            GameController.self.ballDestroyed(other.gameObject);
+        }
+        Destroy(other.gameObject);
     }
 
 }

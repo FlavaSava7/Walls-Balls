@@ -11,11 +11,11 @@ public class PlayerController : MonoBehaviour {
     public int hp;
     public int maxHP;
 
-    Vector3 mousePos;
-
     public static PlayerController self;
     public static event Action<int> eventPlayerHP;
 
+
+    public LayerMask mouseLayerMask;
     void Awake() {
         self = this;
     }
@@ -34,8 +34,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 mouse = Input.mousePosition;
         Ray castPoint = Camera.main.ScreenPointToRay(mouse);
         RaycastHit hit;
-        if (Physics.Raycast(castPoint, out hit)) {
-            mousePos = hit.point;
+        if (Physics.Raycast(castPoint, out hit, 10000f, mouseLayerMask)) {
             //used transform y so we lock rotation on a single axis
             Vector3 lookAtPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);
             transform.LookAt(lookAtPos);

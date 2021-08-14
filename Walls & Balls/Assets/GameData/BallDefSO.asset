@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Default Ball
   speed: 25
   damage: 1
-  hp: 2
+  hp: 1
+  points: 1

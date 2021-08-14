@@ -7,4 +7,5 @@ public class Tags {
     public const string BALL = "Ball";
     public const string BULLET = "Bullet";
     public const string HEART = "Heart";
+    public const string MAP = "Map";
 }

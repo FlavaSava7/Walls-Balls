@@ -7,10 +7,12 @@ public class UIController : MonoBehaviour {
 
     public GameObject hpBar;
     public Text ballAmountTxt;
+    public Text scoreTxt;
 
     Slider hpSlider;
     Text hpTxt;
     int ballAmount;
+    int score;
 
     void Start() {
         int hp = PlayerController.self.hp;
@@ -24,10 +26,15 @@ public class UIController : MonoBehaviour {
         hpTxt.text = hp.ToString();
 
         ballAmount = 0;
-        handleBallSpawn(0);
+        ballAmountTxt.text = "X" + ballAmount;
+
+        score = 0;
+        scoreTxt.text = score.ToString();
+
 
         PlayerController.eventPlayerHP += handleHPBar;
         GameController.eventBallSpawn += handleBallSpawn;
+        GameController.eventBallDestroyed += handleBallDestroyed;
     }
 
 
@@ -39,6 +46,11 @@ public class UIController : MonoBehaviour {
     public void handleBallSpawn(int amount) {
         ballAmount += amount;
         ballAmountTxt.text = "X" + ballAmount;
+    }
+
+    public void handleBallDestroyed(Ball ball) {
+        score += ball.points;
+        scoreTxt.text = score.ToString();
     }
 
 }

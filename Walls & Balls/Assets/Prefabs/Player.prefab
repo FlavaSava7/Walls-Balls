@@ -91,7 +91,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6198266278443865948}
-  m_Material: {fileID: 13400000, guid: 518d9f5c1112b5f4bb89c3a5abe14434, type: 2}
+  m_Material: {fileID: 13400000, guid: 0a6c918a5edbd81458c4a1dab7819c40, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -112,8 +112,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 4434931415352125638, guid: 3475694bb21a19a48a6a3ee3e29aadd9, type: 3}
   bulletPool: {fileID: 0}
-  hp: 50
-  maxHP: 50
+  hp: 100
+  maxHP: 100
+  mouseLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &7660825450638223309
 GameObject:
   m_ObjectHideFlags: 0

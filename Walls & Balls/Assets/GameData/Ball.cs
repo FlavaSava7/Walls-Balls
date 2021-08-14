@@ -8,4 +8,5 @@ public class Ball : ScriptableObject {
     public int speed;
     public int damage;
     public int hp;
+    public int points;
 }
