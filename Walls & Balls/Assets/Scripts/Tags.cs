@@ -6,6 +6,6 @@ public class Tags {
     public const string PLAYER = "Player";
     public const string BALL = "Ball";
     public const string BULLET = "Bullet";
-    public const string HEART = "Heart";
+    public const string ITEM = "Item";
     public const string MAP = "Map";
 }

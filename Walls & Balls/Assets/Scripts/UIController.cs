@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour {
 
         PlayerController.eventPlayerHP += handleHPBar;
         GameController.eventBallSpawn += handleBallSpawn;
-        GameController.eventBallDestroyed += handleBallDestroyed;
+        GameController.eventScorePoints += handleScore;
     }
 
 
@@ -48,8 +48,8 @@ public class UIController : MonoBehaviour {
         ballAmountTxt.text = "X" + ballAmount;
     }
 
-    public void handleBallDestroyed(Ball ball) {
-        score += ball.points;
+    public void handleScore(int amount) {
+        score += amount;
         scoreTxt.text = score.ToString();
     }
 

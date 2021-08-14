@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour {
     GameObject[] itemsSpawnPlaces;
 
     public static event Action<int> eventBallSpawn;
-    public static event Action<Ball> eventBallDestroyed;
+    public static event Action<int> eventScorePoints;
 
     public static GameController self;
 
@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour {
         setSpawnPlaces(itemsSpawnPlacesParent, ref itemsSpawnPlaces);
 
         StartCoroutine(spawner(ballsSpawnPlaces, ballsPool, balls, ballsMaxAmount, ballsSpawningTime, Tags.BALL));
-        StartCoroutine(spawner(itemsSpawnPlaces, itemsPool, items, itemsMaxAmount, itemsSpawningTime, Tags.HEART));
+        StartCoroutine(spawner(itemsSpawnPlaces, itemsPool, items, itemsMaxAmount, itemsSpawningTime, Tags.ITEM));
     }
 
 
@@ -75,7 +75,7 @@ public class GameController : MonoBehaviour {
         switch (tag) {
             case Tags.BALL:
                 return Quaternion.Euler(0f, Random.Range(0, 360f), 0f);
-            case Tags.HEART:
+            case Tags.ITEM:
             default:
                 return Quaternion.identity;
         }
@@ -84,6 +84,12 @@ public class GameController : MonoBehaviour {
     public void ballDestroyed(GameObject go) {
         eventBallSpawn.Invoke(-1);
         Ball ball = go.GetComponent<BallController>().ball;
-        eventBallDestroyed(ball);
+        scorePoints(ball.points);
     }
+
+    public void scorePoints(int amount) {
+        eventScorePoints(amount);
+    }
+
+
 }

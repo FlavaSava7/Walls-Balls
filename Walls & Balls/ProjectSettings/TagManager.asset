@@ -7,8 +7,8 @@ TagManager:
   - Floor
   - Ball
   - Bullet
-  - Heart
   - Map
+  - Item
   layers:
   - Default
   - TransparentFX

@@ -1529,6 +1529,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6198266278443865948, guid: df24aa7c69069b0488ecd5e1ad106ac7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df24aa7c69069b0488ecd5e1ad106ac7, type: 3}
 --- !u!1 &1102497204
@@ -2222,14 +2226,15 @@ MonoBehaviour:
   - {fileID: 9152150224905421403, guid: d6d62ca3252f39e439f93ccf4909b24c, type: 3}
   ballsSpawnPlacesParent: {fileID: 526763193}
   ballsPool: {fileID: 779060735}
-  ballsMaxAmount: 10
-  ballsSpawningTime: 1
+  ballsMaxAmount: 25
+  ballsSpawningTime: 2
   items:
   - {fileID: 976372096206773714, guid: e2a6e0823052ec1459be4fc0601159ed, type: 3}
+  - {fileID: 1633204987341106148, guid: 55b04fe706ac0a44ba053a7302cf9fa7, type: 3}
   itemsSpawnPlacesParent: {fileID: 701467896}
   itemsPool: {fileID: 1218685555}
   itemsMaxAmount: 4
-  itemsSpawningTime: 30
+  itemsSpawningTime: 10
 --- !u!114 &1958400637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2536,6 +2541,10 @@ PrefabInstance:
     - target: {fileID: 876827632702679846, guid: 8792d1bcad6eda94eb3aec052cca2a7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8554384869115264128, guid: 8792d1bcad6eda94eb3aec052cca2a7e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8792d1bcad6eda94eb3aec052cca2a7e, type: 3}

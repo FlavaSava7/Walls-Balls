@@ -27,9 +27,9 @@ public class BulletController : MonoBehaviour {
         if (other.gameObject.tag == Tags.BALL) {
             BallController ballController = other.gameObject.GetComponent<BallController>();
             ballController.getHit(damage);
-            GameObject.Destroy(gameObject);
-        } else if (other.gameObject.tag == Tags.HEART) {
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
+        } else if (other.gameObject.tag == Tags.ITEM) {
+            Destroy(gameObject);
         }
 
     }
