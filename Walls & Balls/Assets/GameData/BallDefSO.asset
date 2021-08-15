@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BallDefSO
   m_EditorClassIdentifier: 
   name: Default Ball
-  speed: 30
+  speed: 20
   damage: 1
-  hp: 1
+  hp: 2
   points: 1

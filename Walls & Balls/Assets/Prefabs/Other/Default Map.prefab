@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 876827632702679846}
   m_Layer: 10
   m_Name: Default Map
-  m_TagString: Map
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4480735547127478573}
   m_Layer: 10
   m_Name: Torus.006
-  m_TagString: Map
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 8554384869115264129}
   m_Layer: 10
   m_Name: Cone
-  m_TagString: Map
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

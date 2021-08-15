@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallController : MonoBehaviour {
 
     public Ball ball;
+    public GameObject hpBar;
 
+    HPBarController hpBarController;
     Rigidbody rb;
     int hp;
     int speed;
     int damage;
     int points;
+
     void Start() {
         rb = GetComponent<Rigidbody>();
 
@@ -19,6 +23,9 @@ public class BallController : MonoBehaviour {
         speed = ball.speed;
         damage = ball.damage;
         points = ball.points;
+
+        hpBarController = hpBar.GetComponent<HPBarController>();
+        hpBarController.initHPBar(hp);
 
         move(transform.forward);
     }
@@ -40,13 +47,15 @@ public class BallController : MonoBehaviour {
         if (hp <= 0) {
             Destroy(gameObject);
             GameController.self.ballDestroyed(gameObject);
+            return;
         }
+        hpBarController.setHPBar(hp);
     }
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag(Tags.PLAYER)) {
             PlayerController.self.getHit(damage);
-        } else if (collision.gameObject.CompareTag(Tags.MAP) && rb.constraints.Equals(RigidbodyConstraints.None)) {
+        } else if (collision.gameObject.CompareTag(Tags.FLOOR) && rb.constraints.Equals(RigidbodyConstraints.None)) {
             //prevent balls from flying around when hitting each other
             rb.constraints = RigidbodyConstraints.FreezePositionY;
         }
