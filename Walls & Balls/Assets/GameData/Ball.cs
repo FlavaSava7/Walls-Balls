@@ -9,4 +9,5 @@ public class Ball : ScriptableObject {
     public int damage;
     public int hp;
     public int points;
+    public BallType type;
 }

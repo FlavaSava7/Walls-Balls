@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
+    public static UIController self;
     public GameObject hpBar;
     public Text ballAmountTxt;
     public Text scoreTxt;
@@ -13,6 +14,10 @@ public class UIController : MonoBehaviour {
     Text hpTxt;
     int ballAmount;
     int score;
+
+    void Awake() {
+        self = this;
+    }
 
     void Start() {
         int hp = PlayerController.self.hp;
@@ -33,23 +38,30 @@ public class UIController : MonoBehaviour {
 
 
         PlayerController.eventPlayerHP += handleHPBar;
-        GameController.eventBallSpawn += handleBallSpawn;
-        GameController.eventScorePoints += handleScore;
     }
 
 
     public void handleHPBar(int amount) {
         hpSlider.value += amount;
+        if (hpSlider.value < 0) {
+            hpSlider.value = 0;
+        }
         hpTxt.text = hpSlider.value.ToString();
     }
 
     public void handleBallSpawn(int amount) {
         ballAmount += amount;
+        if (ballAmount < 0) {
+            ballAmount = 0;
+        }
         ballAmountTxt.text = "X" + ballAmount;
     }
 
     public void handleScore(int amount) {
         score += amount;
+        if (score < 0) {
+            score = 0;
+        }
         scoreTxt.text = score.ToString();
     }
 

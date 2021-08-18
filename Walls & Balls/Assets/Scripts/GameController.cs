@@ -23,9 +23,6 @@ public class GameController : MonoBehaviour {
     public float itemsSpawningTime;
     GameObject[] itemsSpawnPlaces;
 
-    public static event Action<int> eventBallSpawn;
-    public static event Action<int> eventScorePoints;
-
     public static GameController self;
 
     void Awake() {
@@ -63,9 +60,8 @@ public class GameController : MonoBehaviour {
             int pfIdx = Random.Range(0, prefabs.Length);
             GameObject go = Instantiate(prefabs[pfIdx], spawnPlaces[spawnIdx].transform.position, getSpawnerRotation(tag), pool.transform);
             if (tag == Tags.BALL) {
-                eventBallSpawn.Invoke(1);
+                ballSpawned(1);
             }
-
             yield return new WaitForSeconds(time);
         }
     }
@@ -82,13 +78,17 @@ public class GameController : MonoBehaviour {
     }
 
     public void ballDestroyed(GameObject go) {
-        eventBallSpawn.Invoke(-1);
+        ballSpawned(-1);
         Ball ball = go.GetComponent<BallController>().ball;
         scorePoints(ball.points);
     }
 
     public void scorePoints(int amount) {
-        eventScorePoints(amount);
+        UIController.self.handleScore(amount);
+    }
+
+    public void ballSpawned(int amount) {
+        UIController.self.handleBallSpawn(amount);
     }
 
 

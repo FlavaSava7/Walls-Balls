@@ -14,6 +14,8 @@ public class BallController : MonoBehaviour {
     int speed;
     int damage;
     int points;
+    BallType type;
+
 
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -23,6 +25,7 @@ public class BallController : MonoBehaviour {
         speed = ball.speed;
         damage = ball.damage;
         points = ball.points;
+        type = ball.type;
 
         hpBarController = hpBar.GetComponent<HPBarController>();
         hpBarController.initHPBar(hp);
@@ -45,11 +48,15 @@ public class BallController : MonoBehaviour {
     public void getHit(int amount) {
         hp -= amount;
         if (hp <= 0) {
-            Destroy(gameObject);
-            GameController.self.ballDestroyed(gameObject);
+            destroyBall();
             return;
         }
         hpBarController.setHPBar(hp);
+    }
+
+    public void destroyBall() {
+        Destroy(gameObject);
+        GameController.self.ballDestroyed(gameObject);
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -60,5 +67,6 @@ public class BallController : MonoBehaviour {
             rb.constraints = RigidbodyConstraints.FreezePositionY;
         }
     }
+
 
 }
